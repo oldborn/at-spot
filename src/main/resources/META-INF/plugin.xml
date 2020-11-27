@@ -1,0 +1,95 @@
+<idea-plugin>
+  <id>io.github.oldborn.atspot</id>
+  <name>@Spot</name>
+  <version>0.1.0</version>
+  <vendor email="s.safak.topcu@gmail.com" url="http://oldborn.github.io">Oldborn</vendor>
+
+  <description><![CDATA[
+      <h1>@Spot: A spotify plugin!</h1><br>
+      <p>
+        An online spotify plugin that adds following features:</br>
+        <ul>
+            <li>@Spot : prints current spotify track</li>
+            <li>$SPOT$ for the file templates</li>
+            <li>A shortcut pane to control spotify (CTRL + SHIFT + S)</li>
+            <li>@SpotOnce{} same as @Spot but leaves the annotation.</li>
+            <li>@SpotRepeat{} adds a spot everytime add a spot action triggered.</li>
+        </ul>
+      </p>
+      <p>
+        Usage: <a href="https://github.com/oldborn/at-spot">Github README</a></br>
+        Potential Devlog: <a href="https://oldborn.github.io/portfolio/atspot_project/">@Spot Blog</a>
+      </p>
+      <p>
+        Created by <a href="http://oldborn.github.io">oldborn</a></br>
+        This plugin highly inspired by AtSoundtrack project. Unfortunately AtSoundtrack does not work on Windows/Linux,
+        and I would love to change my music from my favourite IDE.
+      </p>
+    ]]></description>
+
+  <change-notes><![CDATA[
+      Hello World!<br>
+    ]]>
+  </change-notes>
+
+
+  <depends>com.intellij.modules.platform</depends>
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+  <!--<idea-version since-build="201.0"/> -->
+
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+       on how to target different products -->
+  <!-- uncomment to enable plugin in all products
+  <depends>com.intellij.modules.lang</depends>
+  -->
+
+  <extensions defaultExtensionNs="com.intellij">
+    <!-- Add your extensions here -->
+    <applicationService serviceImplementation="io.github.oldborn.atspot.util.StorageService"/>
+    <applicationService serviceImplementation="io.github.oldborn.atspot.spotifywebapi.SptfyAuthService"/>
+    <applicationService serviceImplementation="io.github.oldborn.atspot.spotifywebapi.currenttrack.SptfyGetCurrentTrackService"/>
+    <applicationService serviceImplementation="io.github.oldborn.atspot.util.UnsafeOkHttpService"/>
+    <applicationService serviceImplementation="io.github.oldborn.atspot.spotifywebapi.SptfyTokenService"/>
+    <applicationService serviceImplementation="io.github.oldborn.atspot.spotifywebapi.SptfyRefreshAccessTokenService"/>
+    <applicationService serviceImplementation="io.github.oldborn.atspot.spotifywebapi.SptfyGetAccessTokenService"/>
+    <applicationService serviceImplementation="io.github.oldborn.atspot.spotifywebapi.nexttrack.SptfyNextTrackService"/>
+    <applicationService serviceImplementation="io.github.oldborn.atspot.spotifywebapi.prevtrack.SptfyPrevTrackService"/>
+    <applicationService serviceImplementation="io.github.oldborn.atspot.spotifywebapi.pausetrack.SptfyPauseTrackService"/>
+    <applicationService serviceImplementation="io.github.oldborn.atspot.spotifywebapi.playtrack.SptfyPlayTrackService"/>
+    <applicationService serviceImplementation="io.github.oldborn.atspot.spotifywebapi.playpausetrack.SptfyPlayPauseService"/>
+    <applicationService serviceImplementation="io.github.oldborn.atspot.spotifywebapi.spottrack.SpotTrackService"/>
+
+    <applicationConfigurable displayName="@Spot" id="Spot.Configuration" instance="io.github.oldborn.atspot.config.SpotConfigurable" />
+    <defaultLiveTemplatesProvider implementation="io.github.oldborn.atspot.macro.AtSpotTemplateProvider"/>
+    <liveTemplateMacro implementation="io.github.oldborn.atspot.macro.AtSpotMacro"/>
+    <defaultTemplatePropertiesProvider implementation="io.github.oldborn.atspot.macro.AtSpotPropertiesProvider"/>
+  </extensions>
+
+  <actions>
+    <group id="Spot.MainGroup" text="@Spot" popup="true">
+        <add-to-group group-id="ToolsMenu" anchor="first"/>
+        <add-to-group group-id="EditorPopupMenu" anchor="first"/>
+        <action id="Spot.PausePlay" class="io.github.oldborn.atspot.action.PausePlaySpotAction" text="Play/Pause">
+            <keyboard-shortcut keymap="$default" first-keystroke="shift ctrl alt DOWN"/>
+        </action>
+        <action id="Spot.NextSpot" class="io.github.oldborn.atspot.action.NextSpotAction" text="Next"
+                description="Plays next song">
+            <keyboard-shortcut keymap="$default" first-keystroke="shift ctrl alt RIGHT"/>
+        </action>
+        <action id="Spot.PrevSpot" class="io.github.oldborn.atspot.action.PrevSpotAction" text="Previous"
+                description="Plays previous track">
+            <keyboard-shortcut keymap="$default" first-keystroke="shift ctrl alt LEFT"/>
+        </action>
+        <action id="Spot.AddSpot" class="io.github.oldborn.atspot.action.AddSpotAction" text="Add a Spot" description="Adds a spot to current java class">
+            <keyboard-shortcut keymap="$default" first-keystroke="shift ctrl alt SPACE"/>
+        </action>
+        
+    </group>
+
+      <action id="Spot.Popup" class="io.github.oldborn.atspot.action.PopupSpotAction" text="Popup">
+          <keyboard-shortcut keymap="$default" first-keystroke="shift ctrl S"/>
+      </action>
+  </actions>
+
+
+</idea-plugin>

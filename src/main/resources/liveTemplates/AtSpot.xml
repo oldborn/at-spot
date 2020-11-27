@@ -1,0 +1,20 @@
+<templateSet group="@Spot">
+  <template name="@SpotOnce {}" value="@SpotOnce {$Spot$}" description="Adds a spot once." toReformat="false" toShortenFQNames="true">
+    <variable name="Spot" expression="spot" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="OTHER" value="true" />
+    </context>
+  </template>
+  <template name="@SpotRepeat {}" value="@SpotRepeat {$Spot$}" description="Adds a spot whenever Add a Spot action triggered." toReformat="false" toShortenFQNames="true">
+    <variable name="Spot" expression="spot" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="OTHER" value="true" />
+    </context>
+  </template>
+  <template name="@Spot" value="$Spot$" description="Adds a spot." toReformat="false" toShortenFQNames="true">
+    <variable name="Spot" expression="spot" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="OTHER" value="true" />
+    </context>
+  </template>
+</templateSet>

@@ -5,6 +5,7 @@ This project is MIT Licensed.
 ## Features
 * Control Spotify directly from IDEA
     * Ctrl + Shift + S to open the @Spot Popup Window.
+    
     ![@Spot Popup](readme_resources/atspot_popup.png?raw=true "@Spot Popup") 
     * You can use shortcuts or buttons to navigate through the playlist.
 * @Spot macro to insert currently played track whenever you want

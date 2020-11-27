@@ -1,5 +1,6 @@
 # @Spot
 An IntelliJ IDEA Plugin, to control spotify and have fun.
+This project is MIT Licensed.
 
 ## Features
 * Control Spotify directly from IDEA

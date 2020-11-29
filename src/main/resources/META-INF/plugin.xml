@@ -9,13 +9,18 @@
       <p>
         An online spotify plugin that adds following features:</br>
         <ul>
-            <li>@Spot : prints current spotify track</li>
-            <li>$SPOT$ for the file templates</li>
             <li>A shortcut pane to control spotify (CTRL + SHIFT + S)</li>
+            <img src="https://raw.githubusercontent.com/oldborn/at-spot/master/readme_resources/atspot_popup.png" alt="Popup" width="300">
+            <li>@Spot : prints current spotify track</li>
+            <img src="https://raw.githubusercontent.com/oldborn/at-spot/master/readme_resources/showoff.gif" alt="Show" width="720">
+            <li>$SPOT$ for the file templates</li>
             <li>@SpotOnce{} same as @Spot but leaves the annotation.</li>
             <li>@SpotRepeat{} adds a spot everytime add a spot action triggered.</li>
         </ul>
       </p>
+      
+      
+      
       <p>
         Usage: <a href="https://github.com/oldborn/at-spot">Github README</a></br>
         Potential Devlog: <a href="https://oldborn.github.io/portfolio/atspot_project/">@Spot Blog</a>
@@ -28,7 +33,9 @@
     ]]></description>
 
   <change-notes><![CDATA[
-      Hello World!<br>
+      <p>
+        Hello World!
+      </p>
     ]]>
   </change-notes>
 
